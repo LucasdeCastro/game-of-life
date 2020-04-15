@@ -7,7 +7,13 @@ const Header = ({
   const runningText = running ? 'Pausar' : 'Iniciar';
   return (
     <div className="header-container">
-      <h1>Game of life</h1>
+      <h1 style={{ marginBottom: '0px' }}>Game of life</h1>
+      <p>
+        Para mais informações sobre as regras acesse a
+        {' '}
+        <a href="https://pt.wikipedia.org/wiki/Jogo_da_vida">Wiki</a>
+      </p>
+
       <div className="diplay-flex button-container">
         <button
           type="button"
