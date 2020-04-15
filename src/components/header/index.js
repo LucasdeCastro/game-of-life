@@ -1,42 +1,36 @@
 import React from 'react';
 import './header.css';
 
-const MAX_GRID = 40;
-
 const Header = ({
-  setGrid, custom, reset, running, toggleStart, toggleForm,
+  reset, running, toggleStart, clear,
 }) => {
-  const createGrid = () => {
-    const height = parseInt(document.getElementById('height').value || 0, 10);
-    const width = parseInt(document.getElementById('width').value || 0, 10);
-
-    const grid = new Array(Math.min(height, MAX_GRID))
-      .fill(0)
-      .map(() => new Array(Math.min(width, MAX_GRID)).fill(0));
-
-    setGrid(grid);
-  };
-
+  const runningText = running ? 'Pausar' : 'Iniciar';
   return (
     <div className="header-container">
       <h1>Game of life</h1>
-      <div className="diplay-flex">
-        <button type="button" onClick={reset}>Reiniciar</button>
-        <button type="button" onClick={() => toggleForm(true)}>Custom</button>
-        <button type="button" onClick={() => toggleStart(!running)}>
-          {running ? 'Pausar' : 'Iniciar'}
+      <div className="diplay-flex button-container">
+        <button
+          type="button"
+          className="button"
+          onClick={() => toggleStart(!running)}
+        >
+          {runningText}
+        </button>
+        <button
+          type="button"
+          className="button"
+          onClick={() => clear(true)}
+        >
+          Customizado
+        </button>
+        <button
+          type="button"
+          className="button"
+          onClick={reset}
+        >
+          Resetar
         </button>
       </div>
-
-      {
-        custom && (
-          <div className="diplay-flex">
-            <input id="height" type="number" max={MAX_GRID} placeholder="Altura" />
-            <input id="width" type="number" max={MAX_GRID} placeholder="Largura" />
-            <button type="button" onClick={createGrid}>Gerar</button>
-          </div>
-        )
-      }
     </div>
   );
 };

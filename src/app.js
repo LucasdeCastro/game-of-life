@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Grid from './components/grid';
-import game, { gosper } from './gameOfLife';
+import game, { gosper, createGrid } from './gameOfLife';
 import Header from './components/header';
+import './index.css';
 
 const App = () => {
   const [state, setState] = useState(gosper);
-  const [custom, toggleForm] = useState(false);
   const [running, toggleStart] = useState(true);
 
   useEffect(() => {
@@ -18,15 +18,19 @@ const App = () => {
     return () => clearInterval(id);
   });
 
+  const clear = () => {
+    setState(createGrid(25, 38));
+    toggleStart(true);
+  };
+
   return (
-    <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+    <div className="app-container">
       <Header
-        reset={() => setState(gosper)}
-        custom={custom}
+        clear={clear}
         running={running}
         setGrid={setState}
-        toggleForm={toggleForm}
         toggleStart={toggleStart}
+        reset={() => setState(gosper)}
       />
 
       <Grid

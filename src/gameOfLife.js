@@ -32,6 +32,10 @@ export const gosper = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
+export const createGrid = (height, width) => new Array(height)
+  .fill(0)
+  .map(() => new Array(width).fill(0));
+
 const getNeighbors = (cells, x, y) => {
   let neighbors = 0;
   for (let i = -1; i <= 1; i++) {

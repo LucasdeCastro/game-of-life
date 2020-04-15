@@ -1,7 +1,27 @@
 .header-container {
   margin-bottom: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .display-flex {
   display: flex;
+}
+
+.button-container button{
+  margin: 10px;
+
+}
+
+.button {
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.button:hover{
+  background: rgba(0,0,0,0.1);
 }
