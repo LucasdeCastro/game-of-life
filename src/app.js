@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Grid from './components/grid';
-import game, { mock } from './gameOfLife';
+import game, { gosper } from './gameOfLife';
 import Header from './components/header';
 
 const App = () => {
-  const [state, setState] = useState(mock);
+  const [state, setState] = useState(gosper);
   const [custom, toggleForm] = useState(false);
   const [running, toggleStart] = useState(true);
-
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -19,17 +18,17 @@ const App = () => {
     return () => clearInterval(id);
   });
 
-
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
       <Header
-        reset={() => setState(mock)}
+        reset={() => setState(gosper)}
         custom={custom}
         running={running}
         setGrid={setState}
         toggleForm={toggleForm}
         toggleStart={toggleStart}
       />
+
       <Grid
         setValue={(x, y, v) => {
           toggleStart(false);
